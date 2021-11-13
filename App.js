@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Alert, Modal, StyleSheet, Text, Pressable, View, ImageBackground, Button, TouchableOpacity } from "react-native";
-import ReportPollutionForm from "./ReportPollution";
+import ReportPollutionForm from "./ReportPollutionForm";
 class App extends Component {
   state = {
     modalVisible: false
