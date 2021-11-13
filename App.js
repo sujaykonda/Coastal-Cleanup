@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Alert, Modal, StyleSheet, Text, Pressable, View, ImageBackground, Button, TouchableOpacity } from "react-native";
-
+import ReportPollutionForm from "./ReportPollution";
 class App extends Component {
   state = {
     modalVisible: false
@@ -12,14 +12,33 @@ class App extends Component {
   
 
   render() {
+    const { modalVisible } = this.state
     return(
       <View style={styles.centeredView}>
         <ImageBackground source={require("./assets/beach-home-page.png")} resizeMode="stretch" style={styles.backgroundImage}>
-          <Text style={styles.largeText}>Together, we can do it!</Text>
-          <View style={styles.buttonContainer}>
-            <TouchableOpacity title = "File Pollution Report" style={styles.button} activeOpacity={0.8}><Text style={styles.mainButtonText}>Report Pollution</Text></TouchableOpacity>
-            <TouchableOpacity style={styles.button} title = "Volunteer Sign Up" activeOpacity={0.8}><Text style={styles.mainButtonText}>Volunteer Sign Up</Text></TouchableOpacity>
-          </View>
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={modalVisible}
+          onRequestClose={() => {
+            Alert.alert("Modal has been closed.");
+            this.setModalVisible(!modalVisible);
+          }}
+        >
+          <ReportPollutionForm/>
+        </Modal>
+        <Text style={styles.largeText}>Together, we can do it!</Text>
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity title = "File Pollution Report" style={styles.button} activeOpacity={0.8}
+          onPress={() => {
+            this.setModalVisible(!modalVisible)
+          }}>
+            <Text style={styles.mainButtonText}>Report Pollution</Text>
+          </TouchableOpacity>
+          <TouchableOpacity title = "Volunteer Sign Up" style={styles.button} activeOpacity={0.8}>
+            <Text style={styles.mainButtonText}>Volunteer Sign Up</Text>
+          </TouchableOpacity>
+        </View>
         </ImageBackground>
       </View>
     )
