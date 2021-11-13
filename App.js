@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Alert, Modal, StyleSheet, Text, Pressable, View } from "react-native";
+import { Alert, Modal, StyleSheet, Text, Pressable, View, ImageBackground, Button, TouchableOpacity } from "react-native";
 
 class App extends Component {
   state = {
@@ -9,85 +9,64 @@ class App extends Component {
   setModalVisible = (visible) => {
     this.setState({ modalVisible: visible });
   }
+  
 
   render() {
-    const { modalVisible } = this.state;
-    return (
+    return(
       <View style={styles.centeredView}>
-        <Modal
-          animationType="slide"
-          transparent={true}
-          visible={modalVisible}
-          onRequestClose={() => {
-            Alert.alert("Modal has been closed.");
-            this.setModalVisible(!modalVisible);
-          }}
-        >
-          <View style={styles.centeredView}>
-            <View style={styles.modalView}>
-              <Text style={styles.modalText}>Hello World!</Text>
-              <Pressable
-                style={[styles.button, styles.buttonClose]}
-                onPress={() => this.setModalVisible(!modalVisible)}
-              >
-                <Text style={styles.textStyle}>Hide Modal</Text>
-              </Pressable>
-            </View>
+        <ImageBackground source={require("./assets/beach-home-page.png")} resizeMode="stretch" style={styles.backgroundImage}>
+          <Text style={styles.largeText}>Together, we can do it!</Text>
+          <View style={styles.buttonContainer}>
+            <TouchableOpacity title = "File Pollution Report" style={styles.button} activeOpacity={0.8}><Text style={styles.mainButtonText}>Report Pollution</Text></TouchableOpacity>
+            <TouchableOpacity style={styles.button} title = "Volunteer Sign Up" activeOpacity={0.8}><Text style={styles.mainButtonText}>Volunteer Sign Up</Text></TouchableOpacity>
           </View>
-        </Modal>
-        <Pressable
-          style={[styles.button, styles.buttonOpen]}
-          onPress={() => this.setModalVisible(true)}
-        >
-          <Text style={styles.textStyle}>Show Modal</Text>
-        </Pressable>
+        </ImageBackground>
       </View>
-    );
+    )
   }
 }
 
 const styles = StyleSheet.create({
+  mainButtonText: {
+    color:"white",
+    fontSize:20 ,
+    opacity:"100%",
+    flex:1,
+    margin:20,
+    textAlign:'center',
+  },
+  button: {
+    width:120,
+    height:90,
+    borderRadius:5,
+    backgroundColor:"#211A1A",
+    opacity:"72%",
+    marginLeft:20,
+    marginRight:20,
+    alignItems:"center",
+    justifyContent:"center"
+  },
+  buttonContainer: {
+    flexDirection:'row',
+    marginTop: 379
+  },
+  largeText: {
+    margin:40,
+    color:"black",
+    fontSize: 40,
+    textAlign:"center"
+  },
   centeredView: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 22
   },
-  modalView: {
-    margin: 20,
-    backgroundColor: "white",
-    borderRadius: 20,
-    padding: 35,
+  backgroundImage: {
+    height: '100%',
+    width: '100%',
+    justifyContent: "flex-start",
     alignItems: "center",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5
   },
-  button: {
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2
-  },
-  buttonOpen: {
-    backgroundColor: "#F194FF",
-  },
-  buttonClose: {
-    backgroundColor: "#2196F3",
-  },
-  textStyle: {
-    color: "white",
-    fontWeight: "bold",
-    textAlign: "center"
-  },
-  modalText: {
-    marginBottom: 15,
-    textAlign: "center"
-  }
 });
 
 export default App;
