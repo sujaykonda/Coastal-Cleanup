@@ -1,41 +1,62 @@
 import React, { Component } from "react";
 import { Alert, Modal, StyleSheet, Text, Pressable, View, ImageBackground, Button, TouchableOpacity } from "react-native";
+import PollutionMap from "./PollutionMap";
 import ReportPollutionForm from "./ReportPollutionForm";
 class App extends Component {
   state = {
-    modalVisible: false
+    formModalVisible: false,
+    mapModalVisible: false,
   };
 
-  setModalVisible = (visible) => {
-    this.setState({ modalVisible: visible });
+  setVisible = (f, m) => {
+    this.setState({ formModalVisible: f, mapModalVisible: m });
   }
-  
 
   render() {
-    const { modalVisible } = this.state
+    const { formModalVisible, mapModalVisible } = this.state
+    console.log(formModalVisible)
+    console.log(mapModalVisible)
     return(
       <View style={styles.centeredView}>
         <ImageBackground source={require("./assets/beach-home-page.png")} resizeMode="stretch" style={styles.backgroundImage}>
+        
         <Modal
           animationType="slide"
           transparent={true}
-          visible={modalVisible}
+          visible={formModalVisible}
           onRequestClose={() => {
-            Alert.alert("Modal has been closed.");
-            this.setModalVisible(!modalVisible);
+            this.setVisible(!formModalVisible, mapModalVisible);
           }}
         >
           <ReportPollutionForm/>
         </Modal>
+
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={mapModalVisible}
+          onRequestClose={() => {
+            this.setVisible(formModalVisible, !mapModalVisible);
+          }}
+        >
+          <PollutionMap/>
+        </Modal>
+
         <Text style={styles.largeText}>Together, we can do it!</Text>
         <View style={styles.buttonContainer}>
           <TouchableOpacity title = "File Pollution Report" style={styles.button} activeOpacity={0.8}
           onPress={() => {
-            this.setModalVisible(!modalVisible)
+            this.setVisible(true, mapModalVisible);
+            console.log(this.state);
           }}>
             <Text style={styles.mainButtonText}>Report Pollution</Text>
           </TouchableOpacity>
-          <TouchableOpacity title = "Volunteer Sign Up" style={styles.button} activeOpacity={0.8}>
+          <TouchableOpacity title = "Volunteer Sign Up" style={styles.button} activeOpacity={0.8}
+          onPress={() => {
+            console.log("map modal on")
+            this.setVisible(formModalVisible, true);
+            console.log(this.state);
+          }}>
             <Text style={styles.mainButtonText}>Volunteer Sign Up</Text>
           </TouchableOpacity>
         </View>
