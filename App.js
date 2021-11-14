@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Alert, Modal, StyleSheet, Text, Pressable, View, ImageBackground, Button, TouchableOpacity } from "react-native";
 import PollutionFeed from "./PollutionFeed";
 import PollutionForm from "./PollutionForm";
+// Initialize Firebase
 class App extends Component {
     state = {
         formModalVisible: false,
@@ -14,8 +15,6 @@ class App extends Component {
 
     render() {
         const { formModalVisible, mapModalVisible } = this.state
-        console.log(formModalVisible)
-        console.log(mapModalVisible)
         return (
             <View style={styles.centeredView}>
                 <ImageBackground source={require("./assets/beach-home-page.png")} resizeMode="stretch" style={styles.backgroundImage}>
@@ -47,15 +46,12 @@ class App extends Component {
                         <TouchableOpacity title="File Pollution Report" style={styles.button} activeOpacity={0.8}
                             onPress={() => {
                                 this.setVisible(true, mapModalVisible);
-                                console.log(this.state);
                             }}>
                             <Text style={styles.mainButtonText}>Report Pollution</Text>
                         </TouchableOpacity>
                         <TouchableOpacity title="Volunteer Sign Up" style={styles.button} activeOpacity={0.8}
                             onPress={() => {
-                                console.log("map modal on")
                                 this.setVisible(formModalVisible, true);
-                                console.log(this.state);
                             }}>
                             <Text style={styles.mainButtonText}>Volunteer Sign Up</Text>
                         </TouchableOpacity>

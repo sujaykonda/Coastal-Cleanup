@@ -2,6 +2,8 @@ import React from "react"
 import { Component, useState, useEffect } from "react"
 import { Alert, Modal, StyleSheet, Text, Pressable, View, ImageBackground, Button, TouchableOpacity, TextInput, Image } from "react-native";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { collection, addDoc } from 'firebase/firestore/lite';
+import FirebaseInfo from "./FirebaseHandler";
 
 import * as ImagePicker from 'expo-image-picker';
 class PollutionForm extends Component {
@@ -31,8 +33,6 @@ class PollutionForm extends Component {
             mediaTypes: ImagePicker.MediaTypeOptions.Images,
         });
 
-        console.log(JSON.stringify(_image));
-
         if (!_image.cancelled) {
             this.set("photo", _image.uri);
         }
@@ -52,12 +52,21 @@ class PollutionForm extends Component {
         state[x] = y;
         this.setState(state);
     }
+
+    onSubmit() {
+        const { address, lat, long, email, description, photo } = this.state;
+        if (address == "" || email == "" || description == "" || !photo) {
+            return;
+        }
+        addDoc(collection(FirebaseInfo.db, "formresults"), { address: address, lat: lat, long: long, email: email, description: description, photo: photo })
+        this.props.onClose();
+    }
     render = () => {
 
         //useEffect(() => {
         //    checkForCameraRollPermission()
         //}, []);
-        var { address, lat, long, email, description, photo } = this.state;
+        const { address, lat, long, email, description, photo } = this.state;
         return (
             <View style={styles.centeredView}>
                 <ImageBackground source={require("./assets/background.png")} resizeMode="stretch" style={styles.backgroundImage}>
@@ -88,7 +97,7 @@ class PollutionForm extends Component {
                                 </Text>
                             </TouchableOpacity>
                         </View>
-                        <Button title={"submit"} styles={styles.submitButton} />
+                        <Button title={"submit"} styles={styles.submitButton} onPress={() => this.onSubmit()} />
                     </View>
                 </ImageBackground>
             </View>
