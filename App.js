@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Alert, Modal, StyleSheet, Text, Pressable, View, ImageBackground, Button, TouchableOpacity } from "react-native";
-import PollutionMap from "./PollutionMap";
+import PollutionFeed from "./PollutionFeed";
 import ReportPollutionForm from "./ReportPollutionForm";
 class App extends Component {
   state = {
@@ -39,7 +39,7 @@ class App extends Component {
             this.setVisible(formModalVisible, !mapModalVisible);
           }}
         >
-          <PollutionMap/>
+          <PollutionFeed/>
         </Modal>
 
         <Text style={styles.largeText}>Together, we can do it!</Text>
