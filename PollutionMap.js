@@ -7,7 +7,7 @@ class PollutionMap extends Component{
         return (  
             <View style={styles.centeredView}>
                 <ImageBackground source={require("./assets/background.png")} resizeMode="stretch" style={styles.backgroundImage}>
-
+                    
                 </ImageBackground>
             </View>
         )
