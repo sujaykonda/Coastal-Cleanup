@@ -63,7 +63,7 @@ class PollutionForm extends Component {
                 <ImageBackground source={require("./assets/background.png")} resizeMode="stretch" style={styles.backgroundImage}>
                     <View style={styles.box1View}>
                         <Pressable style={styles.xCon} onPress={() => { this.props.onClose() }}>
-                            <Icon name={'close'} color={'white'} size={100} style={{ opacity: 1 }} />
+                            <Icon name={'close'} color={'white'} size={50} style={{ opacity: 1 }} />
                         </Pressable>
                         <Text style={styles.Text1} >Your Email</Text>
                         <TextInput style={styles.txInput} keyboardType="email-address" defaultValue={email} onChangeText={text => this.set("email", text)} />
@@ -77,7 +77,7 @@ class PollutionForm extends Component {
                                     !!photo && <Image source={{ uri: photo }} style={{ width: 200, height: 200 }} />
                                 }
                                 <Text>
-                                    <Text style={imageUploaderStyles.Txt1}>  Upload Photo</Text>
+                                    <Text style={imageUploaderStyles.Txt1}>  Upload Photo </Text>
                                     <Text style={imageUploaderStyles.logo}>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="28" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-upload">
                                             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
@@ -99,14 +99,13 @@ class PollutionForm extends Component {
 const styles = StyleSheet.create({
     xCon: {
         alignItems: "center",
-        marginTop: "15%",
-
+        marginTop: "7%",
         width: 66,
         height: 58,
         color: "white",
         opacity: "100%",
         position: 'absolute',
-        marginLeft: '-55%'
+        marginLeft: '-70%'
     },
     submitButton: {
         paddingTop: 30,
@@ -191,11 +190,11 @@ const imageUploaderStyles = StyleSheet.create({
     },
     logo: {
         alignItems: "center",
-        marginTop: "10%",
+        marginTop: "26%",
         color: "white"
     },
     Txt1: {
-        fontSize: 24,
+        fontSize: 22,
         marginTop: "18%",
         alignItems: 'center',
         color: "white"
