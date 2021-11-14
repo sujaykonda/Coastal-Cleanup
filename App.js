@@ -41,7 +41,7 @@ class App extends Component {
                         <PollutionFeed onClose={() => { this.setVisible(formModalVisible, !mapModalVisible) }} />
                     </Modal>
 
-                    <Text style={styles.largeText}>Together, we can't do it!</Text>
+                    <Text style={styles.largeText}>Together, we can do it!</Text>
                     <View style={styles.buttonContainer}>
                         <TouchableOpacity title="File Pollution Report" style={styles.button} activeOpacity={0.8}
                             onPress={() => {

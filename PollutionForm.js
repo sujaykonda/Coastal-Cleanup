@@ -119,6 +119,8 @@ const styles = StyleSheet.create({
     submitButton: {
         paddingTop: 30,
         flex: 1,
+        margin:"10%",
+        backgroundColor:"white"
     },
     upload: {
         paddingTop: 80,
