@@ -21,8 +21,8 @@ class PollutionFeed extends Component {
                     if (distance < 15) {
                         const photo = doc.data().photo;
                         feed.push(
-                            <View style={styles.boxView}>
-                                <View style={{ opacity: '100%' }}>
+                            <View key={"view1" + doc.id} style={styles.boxView}>
+                                <View key={"view2" + doc.id} style={{ opacity: '100%' }}>
                                     <Image key={"photo" + doc.id} source={{ uri: photo }} style={styles.pic} />
                                     <Text key={"address" + doc.id} style={styles.txt} >{doc.data().address} </Text>
                                     <Text key={"email" + doc.id} style={styles.txt1}>{doc.data().email}</Text>
