@@ -22,15 +22,15 @@ class PollutionFeed extends Component {
                         const photo = doc.data().photo;
                         feed.push(
                             <View style={styles.boxView}>
-                                <View style={{opacity:'100%'}}>
+                                <View style={{ opacity: '100%' }}>
                                     <Image key={"photo" + doc.id} source={{ uri: photo }} style={styles.pic} />
-                                    <Text key={"address" +doc.id} style={styles.txt} >{doc.data().address} </Text>
-                                    <Text key={"email" + doc.id} style= {styles.txt1}>{doc.data().email}</Text>
+                                    <Text key={"address" + doc.id} style={styles.txt} >{doc.data().address} </Text>
+                                    <Text key={"email" + doc.id} style={styles.txt1}>{doc.data().email}</Text>
                                     <Text key={"description" + doc.id} style={styles.txt}>{doc.data().description}</Text>
                                 </View>
                             </View>
                             // <View>
-                                
+
                             //     <Image key={"photo" + doc.id} source={{ uri: photo }} style={{ width: 200, height: 200 }} />
                             //     <Text key={"address" + doc.id}>{doc.data().address}</Text>
                             //     <Text key={"description" + doc.id}>{doc.data().description}</Text>
@@ -66,21 +66,23 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     pic: {
-        width:250,
-        height:150,
-        borderRadius:40,
-        margin:'10%',
-        opacity:'100%'
+        width: 250,
+        height: 150,
+        borderRadius: 40,
+        marginTop: 20,
+        margin: 'auto',
+        opacity: '100%'
     },
     boxView: {
         marginTop: '10%',
-        width: 300 ,
-        height:  400,
+        width: 300,
+        paddingBottom: 30,
+        paddingHorizontal: 20,
         borderRadius: 50,
         backgroundColor: "#2100C3",
-        flexDirection: 'column',
         alignContent: 'center',
         alignItems: "center",
+        justifyContent: "center",
         backgroundColor: 'rgba(33,0,195,0.5)'
     },
     backgroundImage: {
@@ -91,18 +93,18 @@ const styles = StyleSheet.create({
     },
     txt: {
         fontSize: 20,
-        marginTop: "10%",
+        marginTop: "5%",
         alignItems: 'center',
-        alignContent:'center',
-        textAlign:'center',
+        alignContent: 'center',
+        textAlign: 'center',
         color: "white"
     },
     txt1: {
         fontSize: 20,
         marginTop: "6%",
         alignItems: 'center',
-        alignContent:'center',
-        textAlign:'center',
+        alignContent: 'center',
+        textAlign: 'center',
         color: "white"
     },
 })
