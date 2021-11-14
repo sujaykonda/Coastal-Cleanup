@@ -60,6 +60,10 @@ class ReportPollutionForm extends Component {
         return (
             <View style={styles.centeredView}>
                 <ImageBackground source={require("./assets/background.png")} resizeMode="stretch" style={styles.backgroundImage}>
+
+                    <TouchableOpacity style={styles.xCon}> <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><title>Close</title><path fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M368 368L144 144M368 144L144 368"/></svg> 
+                    </TouchableOpacity>
+
                     <View style={styles.box1View}>
                         <Text style={styles.Text1} >Your Email</Text>
                         <TextInput style={styles.txInput} keyboardType="email-address" defaultValue={email} onChangeText={text => this.set("email", text)} />
@@ -93,6 +97,15 @@ class ReportPollutionForm extends Component {
 }
 
 const styles = StyleSheet.create({
+    xCon: {
+        alignItems: "center",
+        marginTop: "15%",
+
+        width: 66,
+        height: 58,
+        position:'absolute',
+        marginLeft:'-55%'
+    },
     submitButton: {
         paddingTop: 30,
         flex: 1,
