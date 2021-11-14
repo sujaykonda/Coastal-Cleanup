@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Alert, Modal, StyleSheet, Text, Pressable, View, ImageBackground, Button, TouchableOpacity } from "react-native";
 import PollutionFeed from "./PollutionFeed";
-import ReportPollutionForm from "./PollutionForm";
+import PollutionForm from "./PollutionForm";
 class App extends Component {
     state = {
         formModalVisible: false,
@@ -25,10 +25,10 @@ class App extends Component {
                         transparent={true}
                         visible={formModalVisible}
                         onRequestClose={() => {
-                            this.setVisible(!formModalVisible, mapModalVisible);
+                            this.setVisible(!formModalVisible, mapModalVisible)
                         }}
                     >
-                        <ReportPollutionForm />
+                        <PollutionForm onClose={() => { this.setVisible(!formModalVisible, mapModalVisible) }} />
                     </Modal>
 
                     <Modal

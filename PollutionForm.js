@@ -1,9 +1,10 @@
 import React from "react"
 import { Component, useState, useEffect } from "react"
 import { Alert, Modal, StyleSheet, Text, Pressable, View, ImageBackground, Button, TouchableOpacity, TextInput, Image } from "react-native";
-import * as ImagePicker from 'expo-image-picker';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-class ReportPollutionForm extends Component {
+import * as ImagePicker from 'expo-image-picker';
+class PollutionForm extends Component {
     state = { address: "", lat: 0, long: 0, email: "", description: "", photo: "" }
     constructor() {
         super()
@@ -60,11 +61,10 @@ class ReportPollutionForm extends Component {
         return (
             <View style={styles.centeredView}>
                 <ImageBackground source={require("./assets/background.png")} resizeMode="stretch" style={styles.backgroundImage}>
-
-                    <TouchableOpacity style={styles.xCon}> <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><title>Close</title><path fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M368 368L144 144M368 144L144 368"/></svg> 
-                    </TouchableOpacity>
-
                     <View style={styles.box1View}>
+                        <Pressable style={styles.xCon} onPress={() => { this.props.onClose() }}>
+                            <Icon name={'close'} color={'white'} size={100} style={{ opacity: 1 }} />
+                        </Pressable>
                         <Text style={styles.Text1} >Your Email</Text>
                         <TextInput style={styles.txInput} keyboardType="email-address" defaultValue={email} onChangeText={text => this.set("email", text)} />
                         <Text style={styles.Text1} >Location</Text>
@@ -103,8 +103,10 @@ const styles = StyleSheet.create({
 
         width: 66,
         height: 58,
-        position:'absolute',
-        marginLeft:'-55%'
+        color: "white",
+        opacity: "100%",
+        position: 'absolute',
+        marginLeft: '-55%'
     },
     submitButton: {
         paddingTop: 30,
@@ -210,4 +212,4 @@ const imageUploaderStyles = StyleSheet.create({
         height: 58,
     }
 })
-export default ReportPollutionForm
+export default PollutionForm
