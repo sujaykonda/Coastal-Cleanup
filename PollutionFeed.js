@@ -21,11 +21,20 @@ class PollutionFeed extends Component {
                     if (distance < 15) {
                         const photo = doc.data().photo;
                         feed.push(
-                            <View>
-                                <Image key={"photo" + doc.id} source={{ uri: photo }} style={{ width: 200, height: 200 }} />
-                                <Text key={"address" + doc.id}>{doc.data().address}</Text>
-                                <Text key={"description" + doc.id}>{doc.data().description}</Text>
+                            <View style={styles.boxView}>
+                                <View style={{opacity:'100%'}}>
+                                    <Image key={"photo" + doc.id} source={{ uri: photo }} style={styles.pic} />
+                                    <Text key={"address" +doc.id} style={styles.txt} >{doc.data().address} </Text>
+                                    <Text key={"email" + doc.id} style= {styles.txt1}>{doc.data().email}</Text>
+                                    <Text key={"description" + doc.id} style={styles.txt}>{doc.data().description}</Text>
+                                </View>
                             </View>
+                            // <View>
+                                
+                            //     <Image key={"photo" + doc.id} source={{ uri: photo }} style={{ width: 200, height: 200 }} />
+                            //     <Text key={"address" + doc.id}>{doc.data().address}</Text>
+                            //     <Text key={"description" + doc.id}>{doc.data().description}</Text>
+                            // </View>
                         )
                     }
                 })
@@ -56,11 +65,45 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
     },
+    pic: {
+        width:250,
+        height:150,
+        borderRadius:40,
+        margin:'10%',
+        opacity:'100%'
+    },
+    boxView: {
+        marginTop: '10%',
+        width: 300 ,
+        height:  400,
+        borderRadius: 50,
+        backgroundColor: "#2100C3",
+        flexDirection: 'column',
+        alignContent: 'center',
+        alignItems: "center",
+        backgroundColor: 'rgba(33,0,195,0.5)'
+    },
     backgroundImage: {
         height: '100%',
         width: '100%',
         justifyContent: "flex-start",
         alignItems: "center",
+    },
+    txt: {
+        fontSize: 20,
+        marginTop: "10%",
+        alignItems: 'center',
+        alignContent:'center',
+        textAlign:'center',
+        color: "white"
+    },
+    txt1: {
+        fontSize: 20,
+        marginTop: "6%",
+        alignItems: 'center',
+        alignContent:'center',
+        textAlign:'center',
+        color: "white"
     },
 })
 
