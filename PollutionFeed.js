@@ -1,8 +1,9 @@
 import React from "react"
 import util from 'util'
 import { Component } from "react"
-import { StyleSheet, Text, View, ImageBackground, Image, ScrollView } from "react-native";
+import { StyleSheet, Text, View, ImageBackground, Pressable, Image, ScrollView } from "react-native";
 import FirebaseInfo from "./FirebaseHandler";
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { collection, getDocs } from 'firebase/firestore/lite';
 
 class PollutionFeed extends Component {
@@ -50,6 +51,9 @@ class PollutionFeed extends Component {
         return (
             <View style={styles.centeredView}>
                 <ImageBackground source={require("./assets/background.png")} resizeMode="stretch" style={styles.backgroundImage}>
+                    <Pressable style={styles.xCon} onPress={() => { this.props.onClose() }}>
+                        <Icon name={'close'} color={'white'} size={50} style={{ opacity: 1 }} />
+                    </Pressable>
                     <ScrollView>
                         {feed}
                     </ScrollView>
@@ -64,6 +68,16 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
+    },
+    xCon: {
+        alignItems: "center",
+        marginTop: "3%",
+        width: 66,
+        height: 58,
+        color: "white",
+        opacity: "100%",
+        position: 'absolute',
+        marginLeft: '-85%'
     },
     pic: {
         width: 250,

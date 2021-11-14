@@ -38,7 +38,7 @@ class App extends Component {
                             this.setVisible(formModalVisible, !mapModalVisible);
                         }}
                     >
-                        <PollutionFeed />
+                        <PollutionFeed onClose={() => { this.setVisible(formModalVisible, !mapModalVisible) }} />
                     </Modal>
 
                     <Text style={styles.largeText}>Together, we can't do it!</Text>
