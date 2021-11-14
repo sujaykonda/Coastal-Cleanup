@@ -10,11 +10,12 @@ class ReportPollutionForm extends Component {
         <ImageBackground source={require("./assets/background.png")} resizeMode="stretch" style={styles.backgroundImage}>
           <View style={styles.box1View}>
             <Text style={styles.Text1}>Your Email</Text>
-            <TextInput  style={styles.txInput}  keyboardType="email-address"  />
+            <TextInput style={styles.txInput} keyboardType="email-address" />
             <Text style={styles.Text1} >Location</Text>
-            <TextInput  style={styles.txInput}/>
+            <TextInput style={styles.txInput} />
             <Text style={styles.Text1}> Description</Text>
             <TextInput style={styles.txInputLarge} multiline={true}></TextInput>
+            <UploadImage style={styles.Upload} />
           </View>
         </ImageBackground>
       </View>
@@ -23,34 +24,38 @@ class ReportPollutionForm extends Component {
 }
 
 const styles = StyleSheet.create({
+  Upload: {
+    paddingTop: 80,
+    flex: 2
+  },
   txInputLarge: {
     width: "100%",
     borderWidth: 1,
     borderRadius: 10,
     padding: 10,
-    backgroundColor:"#546FFF",
-    width:"60%",
-    height:'20%',
-    opacity:"76%",
-    color:'white',
-    fontSize:20,
-    textAlign:'left',
-    textAlignVertical:'top',
+    backgroundColor: "#546FFF",
+    width: "60%",
+    height: '20%',
+    opacity: "76%",
+    color: 'white',
+    fontSize: 20,
+    textAlign: 'left',
+    textAlignVertical: 'top',
     paddingTop: 10,
     paddingBottom: 0,
-    
+
   },
-  txInput:{
+  txInput: {
     width: "100%",
     borderWidth: 1,
     borderRadius: 10,
     padding: 10,
-    backgroundColor:"#546FFF",
-    width:"60%",
-    height:'7%',
-    opacity:"76%",
-    color:'white',
-    fontSize:20
+    backgroundColor: "#546FFF",
+    width: "60%",
+    height: '7%',
+    opacity: "76%",
+    color: 'white',
+    fontSize: 20
   },
   ImagePlace: {
     paddingTop: 100
@@ -72,16 +77,16 @@ const styles = StyleSheet.create({
     height: '90%',
     borderRadius: 50,
     backgroundColor: "#2100C3",
-    flexDirection:'column',
-    alignContent:'center',
-    alignItems:"center",
-    opacity:'71%'
+    flexDirection: 'column',
+    alignContent: 'center',
+    alignItems: "center",
+    opacity: '71%'
   },
   Text1: {
-    fontSize:25,
-    color:"white",
-    textAlign:'center',
-    marginTop:30,
+    fontSize: 25,
+    color: "white",
+    textAlign: 'center',
+    marginTop: 30,
     marginBottom: 20
   }
 });
