@@ -1,8 +1,7 @@
 import React from "react"
 import { Component } from "react"
 import { Alert, Modal, StyleSheet, Text, Pressable, View, ImageBackground, Button, TouchableOpacity} from "react-native";
-
-
+import UploadImage from "./UploadImage";
 
 class ReportPollutionForm extends Component{
     render = ()=> {
@@ -34,7 +33,8 @@ class ReportPollutionForm extends Component{
                     </View>
 
                     <View style={styles.box2View}>
-                    <Text style={styles.Text1}>Picture:</Text>
+                      <Text style={styles.Text1}>Picture:</Text>
+                      <UploadImage/>
                     </View>
                 </ImageBackground>
             </View>
