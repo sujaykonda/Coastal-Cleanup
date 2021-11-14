@@ -1,6 +1,7 @@
 import React from "react"
 import { Component } from "react"
-import { Alert, Modal, StyleSheet, Text, Pressable, View, ImageBackground, Button, TouchableOpacity } from "react-native";
+import { Alert, Modal, StyleSheet, Text, Pressable, View, ImageBackground, Button, TouchableOpacity} from "react-native";
+
 
 
 class ReportPollutionForm extends Component{
@@ -9,10 +10,31 @@ class ReportPollutionForm extends Component{
             <View style={styles.centeredView}>
                 <ImageBackground source={require("./assets/background.png")} resizeMode="stretch" style={styles.backgroundImage}>
                     <View style={styles.box1View}>
-                    <Text style={styles.Text}>Location:</Text>
-                    </View>
-                    <View style={styles.box2View}>
+                        <View style={styles.form}>
+                        <form>
+                            <Text style={styles.Text1}>Location:</Text>
+                            <input
+                                name="Location"
+                                type="string"
+                                value={this.state}
+                                onChange={this.handleInputChange} />
+                        </form>
+                        </View>
 
+                    <View style={styles.form}>
+                        <form>
+                            <Text style={styles.Text2}>Email:</Text>
+                            <input
+                                name="Email"
+                                type="string"
+                                value={this.state}
+                                onChange={this.handleInputChange} />
+                        </form>
+                        </View>
+                    </View>
+
+                    <View style={styles.box2View}>
+                    <Text style={styles.Text1}>Picture:</Text>
                     </View>
                 </ImageBackground>
             </View>
@@ -46,13 +68,24 @@ const styles = StyleSheet.create({
         borderRadius: 50,
         backgroundColor: "#2100C3",
       },
-      Text: {
+      Text1: {
         color:"white",
-        fontSize:"200%" ,
+        fontSize:"125%" ,
         opacity:"100%",
         flex:1,
-        margin: "5%",
         textAlign:'left',
       },
+      Text2: {
+        color:"white",
+        fontSize:"125%" ,
+        opacity:"100%",
+        flex:1,
+        marginTop: "-10%",
+        textAlign:'left',
+      },
+      form: {
+        margin: "5%",
+        marginTop: "10%",
+      }
 });
 export default ReportPollutionForm
