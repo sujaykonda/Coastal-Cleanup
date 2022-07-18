@@ -5,6 +5,7 @@ import { StyleSheet, Text, View, ImageBackground, Pressable, Image, ScrollView }
 import FirebaseInfo from "./FirebaseHandler";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { collection, getDocs } from 'firebase/firestore/lite';
+import { TouchableOpacity } from "react-native-web";
 
 class PollutionFeed extends Component {
     state = { feed: [] }
@@ -28,7 +29,15 @@ class PollutionFeed extends Component {
                                     <Text key={"address" + doc.id} style={styles.txt} >{doc.data().address} </Text>
                                     <Text key={"email" + doc.id} style={styles.txt1}>{doc.data().email}</Text>
                                     <Text key={"description" + doc.id} style={styles.txt}>{doc.data().description}</Text>
-                                </View>
+                                    <View Style={styles.buttonContainer}>
+                                        <TouchableOpacity title="Details" style = {styles.button} activeOpacity={0.8} onPress={() => {
+                                            //  this.setVisible(formModalVisible, true);
+                                            // create contact page and put here
+                                            }}>
+                                            <Text style = {styles.mainButtonText}>Details</Text>
+                                        </TouchableOpacity>
+                                    </View>
+                                </View> 
                             </View>
                             // <View>
 
@@ -51,10 +60,12 @@ class PollutionFeed extends Component {
         return (
             <View style={styles.centeredView}>
                 <ImageBackground source={require("./assets/background.png")} resizeMode="stretch" style={styles.backgroundImage}>
-                    <Pressable style={styles.xCon} onPress={() => { this.props.onClose() }}>
+                    <Pressable style={styles.xCon} onPress={() => { this.props.onClose() }} hitSlop={1000}>
                         <Icon name={'close'} color={'white'} size={50} style={{ opacity: 1 }} />
                     </Pressable>
-                    <ScrollView>
+                    <View style={{margin:10}}></View>
+                   
+                    <ScrollView showsVerticalScrollIndicator={false}>
                         {feed}
                     </ScrollView>
                 </ImageBackground>
@@ -90,6 +101,7 @@ const styles = StyleSheet.create({
     boxView: {
         marginTop: '10%',
         width: 300,
+        paddingTop:10,
         paddingBottom: 30,
         paddingHorizontal: 20,
         borderRadius: 50,
@@ -120,6 +132,31 @@ const styles = StyleSheet.create({
         alignContent: 'center',
         textAlign: 'center',
         color: "white"
+    },
+    mainButtonText: {
+        color: "white",
+        fontSize: 17,
+        opacity: "100%",
+        flex: 1,
+        margin: 20,
+        textAlign: 'center',
+    },
+    button: {
+        width: 70,
+        height: 50,
+        borderRadius: 5,
+        backgroundColor: "#362e2e",
+        opacity: "72%",
+        marginTop:20,
+        marginLeft: 100,
+        alignItems: "center",
+        justifyContent: "center",
+        
+    },
+    buttonContainer: {
+        flexDirection: 'row',
+        alignItems: "center",
+        padding:10,
     },
 })
 

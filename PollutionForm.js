@@ -16,8 +16,8 @@ class PollutionForm extends Component {
             state.lat = l.coords.latitude
             state.long = l.coords.longitude
             this.setState(state)
-            fetch("http://api.positionstack.com/v1/reverse?access_key=dddbe44ef06217ddee31c66082f09941&query=" + this.state.lat + "," + this.state.long).then((responce) => {
-                responce.json().then((json) => {
+            fetch("http://api.positionstack.com/v1/reverse?access_key=dddbe44ef06217ddee31c66082f09941&query=" + this.state.lat + "," + this.state.long).then((response) => {
+                response.json().then((json) => {
                     var state = this.state;
                     console.log(json.data);
                     console.log(json.data[0].label)

@@ -56,6 +56,15 @@ class App extends Component {
                             <Text style={styles.mainButtonText}>Volunteer Sign Up</Text>
                         </TouchableOpacity>
                     </View>
+                    <View Style={styles.buttonContainer}>
+                        <TouchableOpacity title="Contact" style = {styles.button2} activeOpacity={0.8}
+                             onPress={() => {
+                                //  this.setVisible(formModalVisible, true);
+                                // create contact page and put here
+                            }}>
+                            <Text style = {styles.mainButtonText}>Contact</Text>
+                        </TouchableOpacity>
+                    </View>
                 </ImageBackground>
             </View>
         )
@@ -81,6 +90,16 @@ const styles = StyleSheet.create({
         marginRight: 20,
         alignItems: "center",
         justifyContent: "center"
+    },
+    button2: {
+        width: 120,
+        height: 50,
+        borderRadius: 5,
+        backgroundColor: "#211A1A",
+        opacity: "72%",
+        margin: 20,
+        alignItems: "center",
+        justifyContent: "center",
     },
     buttonContainer: {
         flexDirection: 'row',
