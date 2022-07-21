@@ -1,16 +1,20 @@
-import React from "react"
-import util from 'util'
+import React, { useState } from "react"
+// import util from 'util'
 import { Component } from "react"
 import { StyleSheet, Text, View, ImageBackground, Pressable, Image, ScrollView } from "react-native";
 import FirebaseInfo from "./FirebaseHandler";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { collection, getDocs } from 'firebase/firestore/lite';
-import { TouchableOpacity } from "react-native-web";
+import { Modal, TouchableOpacity } from "react-native-web";
+import { MaterialIcons } from '@expo/vector-icons';
 
 class PollutionFeed extends Component {
     state = { feed: [] }
+    
     constructor() {
         super()
+       
+        
         navigator.geolocation.getCurrentPosition((l) => {
             const lat = l.coords.latitude;
             const long = l.coords.longitude;
@@ -22,18 +26,30 @@ class PollutionFeed extends Component {
                     const distance = (lat - lat2) * (lat - lat2) + (long - long2) * (long - long2);
                     if (distance < 15) {
                         const photo = doc.data().photo;
+                        
                         feed.push(
+                            
                             <View key={"view1" + doc.id} style={styles.boxView}>
+                                
                                 <View key={"view2" + doc.id} style={{ opacity: '100%' }}>
+                                    
+                                    {/* <Modal visible={modalOpen}>
+                                        <View style={StyleSheet.modalContent}>
+                                            <MaterialIcons
+                                            name = 'close'
+                                            size={24}
+                                            onPress={() => setModalOpen(false)}
+                                        />
+                                        </View>
+                                    </Modal> */}
+
+                                    {/* Reg info for the user to see*/}
                                     <Image key={"photo" + doc.id} source={{ uri: photo }} style={styles.pic} />
                                     <Text key={"address" + doc.id} style={styles.txt} >{doc.data().address} </Text>
                                     <Text key={"email" + doc.id} style={styles.txt1}>{doc.data().email}</Text>
                                     <Text key={"description" + doc.id} style={styles.txt}>{doc.data().description}</Text>
                                     <View Style={styles.buttonContainer}>
-                                        <TouchableOpacity title="Details" style = {styles.button} activeOpacity={0.8} onPress={() => {
-                                            //  this.setVisible(formModalVisible, true);
-                                            // create contact page and put here
-                                            }}>
+                                        <TouchableOpacity title="Details" style = {styles.button} activeOpacity={0.8}>
                                             <Text style = {styles.mainButtonText}>Details</Text>
                                         </TouchableOpacity>
                                     </View>
@@ -58,7 +74,9 @@ class PollutionFeed extends Component {
         const { feed } = this.state;
         console.log(feed);
         return (
+            
             <View style={styles.centeredView}>
+                
                 <ImageBackground source={require("./assets/background.png")} resizeMode="stretch" style={styles.backgroundImage}>
                     <Pressable style={styles.xCon} onPress={() => { this.props.onClose() }} hitSlop={1000}>
                         <Icon name={'close'} color={'white'} size={50} style={{ opacity: 1 }} />
@@ -68,6 +86,7 @@ class PollutionFeed extends Component {
                     <ScrollView showsVerticalScrollIndicator={false}>
                         {feed}
                     </ScrollView>
+                    <View style = {{marginBottom:20}}></View>
                 </ImageBackground>
             </View>
         )

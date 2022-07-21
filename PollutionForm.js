@@ -5,6 +5,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { collection, addDoc } from 'firebase/firestore/lite';
 import FirebaseInfo from "./FirebaseHandler";
 
+
 import * as ImagePicker from 'expo-image-picker';
 class PollutionForm extends Component {
     state = { address: "", lat: 0, long: 0, email: "", description: "", photo: "" }
