@@ -10,10 +10,8 @@ import { Modal, TouchableOpacity } from "react-native-web";
 class PollutionFeed extends Component {
     state = { feed: [] }
     
-
-    constructor(props) {
-        super(props)
-
+    constructor() {
+        super()
         
         navigator.geolocation.getCurrentPosition((l) => {
             const lat = l.coords.latitude;
@@ -26,13 +24,13 @@ class PollutionFeed extends Component {
                     const distance = (lat - lat2) * (lat - lat2) + (long - long2) * (long - long2);
                     if (distance < 15) {
                         const photo = doc.data().photo;
-
+                        
                         feed.push(
-
+                            
                             <View key={"view1" + doc.id} style={styles.boxView}>
-
+                                
                                 <View key={"view2" + doc.id} style={{ opacity: '100%' }}>
-
+                                    
                                     {/* <Modal visible={modalOpen}>
                                         <View style={StyleSheet.modalContent}>
                                             <MaterialIcons
@@ -49,11 +47,11 @@ class PollutionFeed extends Component {
                                     <Text key={"email" + doc.id} style={styles.txt1}>{doc.data().email}</Text>
                                     <Text key={"description" + doc.id} style={styles.txt}>{doc.data().description}</Text>
                                     <View Style={styles.buttonContainer}>
-                                        <TouchableOpacity title="Details" onPress={() => { props.onDetailsOpen(doc.id) }} style={styles.button} activeOpacity={0.8}>
-                                            <Text style={styles.mainButtonText}>Details</Text>
+                                        <TouchableOpacity title="Details" style = {styles.button} activeOpacity={0.8}>
+                                            <Text style = {styles.mainButtonText}>Details</Text>
                                         </TouchableOpacity>
                                     </View>
-                                </View>
+                                </View> 
                             </View>
                             // <View>
 
@@ -74,19 +72,19 @@ class PollutionFeed extends Component {
         const { feed } = this.state;
         console.log(feed);
         return (
-
+            
             <View style={styles.centeredView}>
-
+                
                 <ImageBackground source={require("./assets/background.png")} resizeMode="stretch" style={styles.backgroundImage}>
                     <Pressable style={styles.xCon} onPress={() => { this.props.onClose() }} hitSlop={1000}>
                         <Icon name={'close'} color={'white'} size={50} style={{ opacity: 1 }} />
                     </Pressable>
-                    <View style={{ margin: 10 }}></View>
-
+                    <View style={{margin:10}}></View>
+                   
                     <ScrollView showsVerticalScrollIndicator={false}>
                         {feed}
                     </ScrollView>
-                    <View style={{ marginBottom: 20 }}></View>
+                    <View style = {{marginBottom:20}}></View>
                 </ImageBackground>
             </View>
         )
@@ -120,7 +118,7 @@ const styles = StyleSheet.create({
     boxView: {
         marginTop: '10%',
         width: 300,
-        paddingTop: 10,
+        paddingTop:10,
         paddingBottom: 30,
         paddingHorizontal: 20,
         borderRadius: 50,
@@ -166,16 +164,16 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         backgroundColor: "#362e2e",
         opacity: "72%",
-        marginTop: 20,
+        marginTop:20,
         marginLeft: 100,
         alignItems: "center",
         justifyContent: "center",
-
+        
     },
     buttonContainer: {
         flexDirection: 'row',
         alignItems: "center",
-        padding: 10,
+        padding:10,
     },
 })
 
