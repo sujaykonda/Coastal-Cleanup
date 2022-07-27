@@ -6,15 +6,15 @@ import FirebaseInfo from "./FirebaseHandler";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { collection, getDocs } from 'firebase/firestore/lite';
 import { Modal, TouchableOpacity } from "react-native-web";
-import { MaterialIcons } from '@expo/vector-icons';
 
 class PollutionFeed extends Component {
     state = { feed: [] }
+    
 
     constructor(props) {
         super(props)
 
-
+        
         navigator.geolocation.getCurrentPosition((l) => {
             const lat = l.coords.latitude;
             const long = l.coords.longitude;
