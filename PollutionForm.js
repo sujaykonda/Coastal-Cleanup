@@ -4,50 +4,13 @@ import { Alert, Modal, StyleSheet, Text, Pressable, View, ImageBackground, Butto
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { collection, addDoc } from 'firebase/firestore/lite';
 import FirebaseInfo from "./FirebaseHandler";
-import { getCurrentPositionAsync, useForegroundPermissions } from "expo-location";
 
 
 import * as ImagePicker from 'expo-image-picker';
 class PollutionForm extends Component {
-
     state = { address: "", lat: 0, long: 0, email: "", description: "", photo: "" }
     constructor() {
         super()
-     
-        const [locationPermssionInformation, requestPermission] = useForegroundPermissions();
-
-        console.log("heheheh")
-
-        // // getting permissions
-        // async function verifyPermissions() {
-        //     if(locationPermssionInformation.status === PermissionStatus.UNDETERMINED) {
-        //         const permissionResponse = await requestPermission();
-
-        //         return permissionResponse.granted;
-        //     }
-
-        //     if(locationPermssionInformation.status === PermissionStatus.DENIED) {
-        //         Alert.alert (
-        //             'Insufficient permissions!',
-        //             'You need to grant location permissions to use this app.'
-        //         )
-        //         return false;
-        //     }
-
-        //     return true;
-        // }
-
-        // async function getLocationHandler() {
-        //     const hasPermission = await verifyPermissions();
-
-        //     if(!hasPermission) {
-        //         return;
-        //     }
-
-        //     const location = await getCurrentPositionAsync();
-        //     console.log(location);
-        // }
-
         navigator.geolocation.getCurrentPosition((l) => {
             console.log(l);
             var state = this.state;
@@ -63,10 +26,8 @@ class PollutionForm extends Component {
                     this.setState(state)
                 })
             })
-            
         })
     }
-    
 
     addImage = async () => {
         let _image = await ImagePicker.launchImageLibraryAsync({
@@ -157,7 +118,7 @@ const styles = StyleSheet.create({
         marginLeft: '-70%'
     },
     submitButton: {
-        margin: 50,
+        paddingTop: 30,
         flex: 1,
         margin:"10%",
         backgroundColor:"white"
@@ -230,7 +191,7 @@ const styles = StyleSheet.create({
 
 const imageUploaderStyles = StyleSheet.create({
     container: {
-        height: 70,
+        height: 150,
         width: 200,
         backgroundColor: "#546FFF",
         position: 'relative',

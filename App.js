@@ -84,7 +84,8 @@ class App extends Component {
 const styles = StyleSheet.create({
     mainButtonText: {
         color: "white",
-        fontSize: 20,       
+        fontSize: 20,
+        opacity: "100%",
         flex: 1,
         margin: 20,
         textAlign: 'center',

@@ -1,11 +1,12 @@
 import React, { useState } from "react"
 // import util from 'util'
 import { Component } from "react"
-import { StyleSheet, Text, View, ImageBackground, Pressable, Image, ScrollView, Dimensions } from "react-native";
+import { StyleSheet, Text, View, ImageBackground, Pressable, Image, ScrollView } from "react-native";
 import FirebaseInfo from "./FirebaseHandler";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { collection, getDocs } from 'firebase/firestore/lite';
 import { Modal, TouchableOpacity } from "react-native-web";
+import { MaterialIcons } from '@expo/vector-icons';
 
 class PollutionDetails extends Component {
 
@@ -13,24 +14,19 @@ class PollutionDetails extends Component {
         super(props)
     }
     render = () => {
-          {/* <div>{this.props.docid}</div> */} // use this later
         return (
-            
-            // <View style={styles.container}>
-            //     <MapView style={styles.map} />
-            // </View>
+
             <View style={styles.centeredView}>
-                
+
                 <ImageBackground source={require("./assets/background.png")} resizeMode="stretch" style={styles.backgroundImage}>
                     <Pressable style={styles.xCon} onPress={() => { this.props.onClose() }} hitSlop={1000}>
                         <Icon name={'close'} color={'white'} size={50} style={{ opacity: 1 }} />
                     </Pressable>
-
-                   
-
+                    <View style={{ margin: 10 }}></View>
+                    <div>{this.props.docid}</div>
+                    <View style={{ marginBottom: 20 }}></View>
                 </ImageBackground>
             </View>
-            
         )
     }
 }
@@ -119,16 +115,6 @@ const styles = StyleSheet.create({
         alignItems: "center",
         padding: 10,
     },
-    map: {
-        width: Dimensions.get('window').width,
-        height: Dimensions.get('window').height,
-      },
-      container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-      },
 })
 
 export default PollutionDetails
